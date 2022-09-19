@@ -4,11 +4,14 @@
 * Read more at https://makecode.microbit.org/blocks/custom
 */
 
+/**
+ * Different things that can happen on Jocelyn's wall
+ */
 enum Happening {
-    //% block="one"
-    One,
-    //% block="two"
-    Two
+    //% block="rainbow"
+    "Rainbow",
+    //% block="stripes"
+    "Stripes"
 }
 
 /**
@@ -23,8 +26,8 @@ namespace jC_Lights {
      * @param e describe parameter here
      */
     //% block
-    export function foo(n: number, s: string, e: Happening): void {
-        // Add code here
+    export function foo(n: number, s: string): String {
+        return "Hello"
     }
 
     /**
