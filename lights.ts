@@ -46,6 +46,7 @@ namespace jC_Lights {
      * Sends a special effect to Jocelyn's wall
      * over bluetooth and serial channels
      */
+    //% help=functions/specialEffect
     //% block="send a %effect special effect to Jocelyn's wall || for %duration seconds"
     export function specialEffect(effect: SpecialEffect, duration: number=0): void {
         const message = "EFFECT:" + effectStr(effect) + ":" + duration
