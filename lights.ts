@@ -4,7 +4,7 @@
 * Read more at https://makecode.microbit.org/blocks/custom
 */
 
-enum MyEnum {
+enum Happening {
     //% block="one"
     One,
     //% block="two"
@@ -12,10 +12,10 @@ enum MyEnum {
 }
 
 /**
- * Custom blocks
+ * lights blocks
  */
-//% weight=100 color=#0fbc11 icon=""
-namespace lights {
+//% weight=100 color=#f9ae00 icon=""
+namespace jC_Lights {
     /**
      * TODO: describe your function here
      * @param n describe parameter here, eg: 5
@@ -23,7 +23,7 @@ namespace lights {
      * @param e describe parameter here
      */
     //% block
-    export function foo(n: number, s: string, e: MyEnum): void {
+    export function foo(n: number, s: string, e: Happening): void {
         // Add code here
     }
 
