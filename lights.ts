@@ -32,10 +32,9 @@ function effectStr(effect: SpecialEffect): string {
 namespace jC_Lights {
 
     /**
-     * Sets up a bluetooth radio connection with another
-     * microbit within the wall.
-     * The microbit communicates with a raspberry pi
-     * which communicates in turn with an arduino!
+     * A serial connection and a bluetooth connection
+     * are both set up to allow the microbit to
+     * communicate to a raspbery pi in the wall.
      */
     //% block="Set up a connection with Jocelyn's wall"
     export function setWallConnection():void {
