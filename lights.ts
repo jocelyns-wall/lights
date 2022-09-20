@@ -1,4 +1,9 @@
 /**
+* Use this file to define custom functions and blocks.
+* Read more at https://makecode.microbit.org/blocks/custom
+*/
+
+/**
  * Different effects that can happen on Jocelyn's wall
  */
 enum SpecialEffect {
@@ -14,16 +19,6 @@ enum SpecialEffect {
     JugglingDots,
 }
 
-function effectStr(effect: SpecialEffect): string {
-    switch (effect) {
-        case SpecialEffect.Rainbow: return "RAINBOW";
-        case SpecialEffect.RainbowWithGlitter: return "RAINBGL";
-        case SpecialEffect.Confetti: return "CONFETT";
-        case SpecialEffect.Sweepingdot: return "SWEEPDT";
-        case SpecialEffect.PulsingStripes: return "PSTRIPE";
-        case SpecialEffect.JugglingDots: return "JUGGDOT";
-    }
-}
 
 /**
  * lights blocks
@@ -43,14 +38,29 @@ namespace jC_Lights {
     }
 
     /**
-     * Sends a special effect to Jocelyn's wall
+     * Sends a command to Jocelyn's wall
      * over bluetooth and serial channels
      */
+    //% help=functions/command
+    //% block="send a command to Jocelyn's wall: %command"
+    export function specialEffect(command: string): void {
+        radio.sendString(command)
+        serial.writeLine(command)
+    }
+
+    /**
+     * Return the string code for a special effect
+     */
     //% help=functions/specialEffect
-    //% block="send a %effect special effect to Jocelyn's wall || for %duration seconds"
-    export function specialEffect(effect: SpecialEffect, duration: number=0): void {
-        const message = "EFFECT:" + effectStr(effect) + ":" + duration
-        radio.sendString(message)
-        serial.writeLine(message)
+    //% block="show a %effect special effect"
+    export function effectStr(effect: SpecialEffect): string {
+        switch (effect) {
+            case SpecialEffect.Rainbow: return "EFFECT:RAINBOW";
+            case SpecialEffect.RainbowWithGlitter: return "EFFECT:RAINBGL";
+            case SpecialEffect.Confetti: return "EFFECT:CONFETT";
+            case SpecialEffect.Sweepingdot: return "EFFECT:SWEEPDT";
+            case SpecialEffect.PulsingStripes: return "EFFECT:PSTRIPE";
+            case SpecialEffect.JugglingDots: return "EFFECT:JUGGDOT";
+        }
     }
 }
