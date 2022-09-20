@@ -35,7 +35,7 @@ namespace jC_Lights {
     //% block="Set up a connection with Jocelyn's wall"
     export function setWallConnection():void {
         radio.setGroup(111)
-        serial.redirectToUSB()
+        serial.setBaudRate(BaudRate.BaudRate9600)
     }
 
     /**
