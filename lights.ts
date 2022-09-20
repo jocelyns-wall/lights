@@ -4,24 +4,25 @@
 */
 
 /**
- * Different effects that can happen on Jocelyn's wall
+ * Different special effects that can happen on Jocelyn's wall
  */
 enum SpecialEffect {
     Rainbow,
     //% block="Rainbow with Glitter"
     RainbowWithGlitter,
+    //% block="Confetti"
     Confetti,
     //% block="Sweeping Dot"
     Sweepingdot,
     //% block="Pulsing Stripes"
     PulsingStripes,
     //% block="Juggling Dots"
-    JugglingDots,
+    JugglingDots
 }
 
 
 /**
- * lights blocks
+ * JC lights blocks
  */
 //% weight=1000 color=#f9ae00 icon=""
 namespace jC_Lights {
@@ -43,17 +44,17 @@ namespace jC_Lights {
      */
     //% help=functions/command
     //% block="send a command to Jocelyn's wall: %command"
-    export function specialEffect(command: string): void {
+    export function sendWallCommand(command: string): void {
         radio.sendString(command)
         serial.writeLine(command)
     }
 
     /**
-     * Return the string code for a special effect
+     * Translates a special effect into a command string
      */
     //% help=functions/specialEffect
     //% block="show a %effect special effect"
-    export function effectStr(effect: SpecialEffect): string {
+    export function specialEffectCommand(effect: SpecialEffect): string {
         switch (effect) {
             case SpecialEffect.Rainbow: return "EFFECT:RAINBOW";
             case SpecialEffect.RainbowWithGlitter: return "EFFECT:RAINBGL";
