@@ -25,7 +25,6 @@ namespace jC_Lights {
      * Sends a command to Jocelyn's wall
      * over bluetooth and serial channels
      */
-    //% help=functions/command
     //% block="send message %message to Jocelyn's wall"
     export function sendWallCommand(message: string): void {
         radio.sendString(message)
@@ -41,8 +40,8 @@ namespace jC_Lights {
      * 4 = Moving Stripes
      * 5 = Juggling Dots
      */
-    //% help=choose an effect number to send as a string command
     //% group="Messages"
+    //% num.min=0 num.max=5 num.defl=3
     //% block="EFFECT:%num"
     export function doSpecialEffect(num: number) {
         return "EFFECT:" + num
