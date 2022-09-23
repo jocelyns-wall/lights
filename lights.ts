@@ -6,6 +6,7 @@
 /**
  * JC lights blocks
  */
+//% groups=['Messages']
 //% weight=1000 color=#f9ae00 icon=""
 namespace jC_Lights {
 
@@ -25,14 +26,14 @@ namespace jC_Lights {
      * over bluetooth and serial channels
      */
     //% help=functions/command
-    //% block="send command string to Jocelyn's wall: %command"
-    export function sendWallCommand(command: string): void {
-        radio.sendString(command)
-        serial.writeLine(command)
+    //% block="send message %message to Jocelyn's wall"
+    export function sendWallCommand(message: string): void {
+        radio.sendString(message)
+        serial.writeLine(message)
     }
 
     /**
-     * A command string to send to Jocelyn's wall.
+     * A message string to send to Jocelyn's wall.
      * 0 = Rainbow
      * 1 = Rainbow with Glitter
      * 2 = Confetti
@@ -41,6 +42,7 @@ namespace jC_Lights {
      * 5 = Juggling Dots
      */
     //% help=choose an effect number to send as a string command
+    //% group="Messages"
     //% block="EFFECT:%num"
     export function doSpecialEffect(num: number) {
         return "EFFECT:" + num
