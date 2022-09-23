@@ -21,6 +21,9 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.B, function () {
     jC_Lights.sendWallCommand(command)
 })
+function doSpecialEffect (num: number) {
+    jC_Lights.sendWallCommand(jC_Lights.specialEffectCommand(SpecialEffect.Rainbow))
+}
 let command = ""
 let effect = 0
 jC_Lights.setWallConnection()

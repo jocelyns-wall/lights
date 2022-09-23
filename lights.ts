@@ -49,6 +49,10 @@ namespace jC_Lights {
         serial.writeLine(command)
     }
 
+    function doSpecialEffect(num: number) {
+        jC_Lights.sendWallCommand(jC_Lights.specialEffectCommand(SpecialEffect.Rainbow))
+    }
+    
     /**
      * Translates a special effect into a command string
      */
