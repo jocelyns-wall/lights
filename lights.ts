@@ -4,24 +4,6 @@
 */
 
 /**
- * Different special effects that can happen on Jocelyn's wall
- */
-enum SpecialEffect {
-    Rainbow,
-    //% block="Rainbow with Glitter"
-    RainbowWithGlitter,
-    //% block="Confetti"
-    Confetti,
-    //% block="Sweeping Dot"
-    Sweepingdot,
-    //% block="Pulsing Stripes"
-    PulsingStripes,
-    //% block="Juggling Dots"
-    JugglingDots
-}
-
-
-/**
  * JC lights blocks
  */
 //% weight=1000 color=#f9ae00 icon=""
@@ -43,29 +25,24 @@ namespace jC_Lights {
      * over bluetooth and serial channels
      */
     //% help=functions/command
-    //% block="send a command to Jocelyn's wall: %command"
+    //% block="send command string to Jocelyn's wall: %command"
     export function sendWallCommand(command: string): void {
         radio.sendString(command)
         serial.writeLine(command)
     }
 
-    function doSpecialEffect(num: number) {
-        jC_Lights.sendWallCommand(jC_Lights.specialEffectCommand(SpecialEffect.Rainbow))
-    }
-    
     /**
-     * Translates a special effect into a command string
+     * A command string to send to Jocelyn's wall.
+     * 0 = Rainbow
+     * 1 = Rainbow with Glitter
+     * 2 = Confetti
+     * 3 = Moving Dot
+     * 4 = Moving Stripes
+     * 5 = Juggling Dots
      */
-    //% help=functions/specialEffect
-    //% block="show a %effect special effect"
-    export function specialEffectCommand(effect: SpecialEffect): string {
-        switch (effect) {
-            case SpecialEffect.Rainbow: return "EFFECT:RAINBOW";
-            case SpecialEffect.RainbowWithGlitter: return "EFFECT:RAINBGL";
-            case SpecialEffect.Confetti: return "EFFECT:CONFETT";
-            case SpecialEffect.Sweepingdot: return "EFFECT:SWEEPDT";
-            case SpecialEffect.PulsingStripes: return "EFFECT:PSTRIPE";
-            case SpecialEffect.JugglingDots: return "EFFECT:JUGGDOT";
-        }
+    //% help=choose an effect number to send as a string command
+    //% block="EFFECT:%num"
+    export function doSpecialEffect(num: number) {
+        return "EFFECT:" + num
     }
 }
