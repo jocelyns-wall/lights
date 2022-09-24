@@ -46,4 +46,27 @@ namespace jC_Lights {
     export function doSpecialEffect(num: number) {
         return "EFFECT:" + num
     }
+
+    /**
+      * Get the effect for a tennis effect
+      * @param effect eg: 1
+      */
+    //% blockId=effectNumber block="$effect"
+    //% blockHidden=true
+    //% colorSecondary="#FFFFFF"
+    //% effect.fieldEditor="numberdropdown" effect.fieldOptions.decompileLiterals=true
+    //% effect.fieldOptions.data='[["Love", 1], ["15", 2], ["30", 3], ["40", 4], ["Game", 5]]'
+    export function __effectNumber(effect: number): number {
+        return effect;
+    }
+
+    /**
+     * set game effect $effect
+     */
+    //% block="$effect"
+    //% effect.shadow="effectNumber"
+    export function setScore(effect: number): number {
+        return effect;
+    }
+
 }
