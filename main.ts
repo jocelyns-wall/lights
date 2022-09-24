@@ -8,4 +8,4 @@ input.onButtonPressed(Button.B, function () {
 })
 let effect_number = 0
 jC_Lights.setWallConnection()
-effect_number = jC_Lights.setScore(jC_Lights.__effectNumber(1))
+effect_number = jC_Lights.setScore(jC_Lights.__effectNumber(5))

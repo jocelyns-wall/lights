@@ -6,7 +6,7 @@
 /**
  * JC lights blocks
  */
-//% groups=['Messages']
+//% groups=['Messages', 'Constants']
 //% weight=1000 color=#f9ae00 icon=""
 namespace jC_Lights {
 
@@ -33,40 +33,32 @@ namespace jC_Lights {
 
     /**
      * A message string to send to Jocelyn's wall.
-     * 0 = Rainbow
-     * 1 = Rainbow with Glitter
-     * 2 = Confetti
-     * 3 = Moving Dot
-     * 4 = Moving Stripes
-     * 5 = Juggling Dots
      */
     //% group="Messages"
     //% num.min=0 num.max=5 num.defl=3
-    //% block="EFFECT:%num"
-    export function doSpecialEffect(num: number) {
-        return "EFFECT:" + num
+    //% block="EFFECT:$effect"
+    //% effect.shadow="effectNumber"
+    export function doSpecialEffect(effect: number) {
+        return "EFFECT:" + effect
     }
 
     /**
-      * Get the effect for a tennis effect
-      * @param effect eg: 1
+      * The currently available lighting effects
+      * @param effect eg: 0
       */
     //% blockId=effectNumber block="$effect"
     //% blockHidden=true
     //% colorSecondary="#FFFFFF"
     //% effect.fieldEditor="numberdropdown" effect.fieldOptions.decompileLiterals=true
-    //% effect.fieldOptions.data='[["Love", 1], ["15", 2], ["30", 3], ["40", 4], ["Game", 5]]'
+    //% effect.fieldOptions.data='[["Rainbow", 0], ["Rainbow Glitter", 1], ["Confetti", 2], ["Moving Dot", 3], ["Moving Stripes", 4], ["Juggling Dots", 5]]'
     export function __effectNumber(effect: number): number {
         return effect;
     }
 
-    /**
-     * set game effect $effect
-     */
+    //% group="Constants"
     //% block="$effect"
     //% effect.shadow="effectNumber"
     export function setScore(effect: number): number {
         return effect;
     }
-
 }
