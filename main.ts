@@ -1,11 +1,14 @@
 input.onButtonPressed(Button.A, function () {
-    effect_number += 1
-    effect_number = effect_number % 6
-    basic.showNumber(effect_number)
+    do_brightness = true
 })
 input.onButtonPressed(Button.B, function () {
-    jC_Lights.sendWallCommand(jC_Lights.doSpecialEffect(effect_number))
+    do_brightness = false
 })
-let effect_number = 0
+let do_brightness = false
 jC_Lights.setWallConnection()
-effect_number = 5
+do_brightness = false
+loops.everyInterval(100, function () {
+    if (do_brightness == true) {
+        jC_Lights.sendWallCommand(jC_Lights.setBrightness(Math.map(input.acceleration(Dimension.X), -1023, 1023, 0, 255)))
+    }
+})
