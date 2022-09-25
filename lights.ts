@@ -6,7 +6,7 @@
 /**
  * JC lights blocks
  */
-//% groups=['Messages', 'Constants']
+//% groups=['Effects Messages', 'Lights Messages']
 //% weight=1000 color=#f9ae00 icon=""
 namespace jC_Lights {
 
@@ -33,8 +33,9 @@ namespace jC_Lights {
 
     /**
      * A message string to send to Jocelyn's wall.
+     * Choose an effect number from 0 to 5
      */
-    //% group="Messages"
+    //% group="Effects Messages"
     //% num.min=0 num.max=5 num.defl=3
     //% block="EFFECT:$effect"
     //% effect.shadow="effectNumber"
@@ -55,10 +56,52 @@ namespace jC_Lights {
         return effect;
     }
 
-    //% group="Constants"
+    //% group="Effects Messages"
     //% block="$effect"
     //% effect.shadow="effectNumber"
-    export function setScore(effect: number): number {
+    function setEffect(effect: number): number {
         return effect;
+    }
+
+    /**
+     * A message string to send to Jocelyn's wall.
+     */
+    //% group="Lights Messages"
+    //% block="SET BRIGHTNESS:%brightness"
+    //% brightness.min=0 brightness.max=255
+    export function setBrightness(brightness: number): string {
+        return "SET BRIGHTNESS:" + brightness
+    }
+
+    /**
+     * A message string to send to Jocelyn's wall.
+     */
+    //% group="Lights Messages"
+    //% block="SET HSV:hue=%h saturation=%s brightness=%v||on LED=$led on strip=$strip"
+    //% hue.min=0 hue.max=255
+    //% saturation.min=0 saturation.max=255
+    //% brightness.min=0 brightness.max=255
+    //% led.min=0 led.max=29 led.defl=0 
+    //% strip.min=0 strip.max=4 strip.defl=0
+    //% expandableArgumentMode="enabled"
+    //% inlineInputMode=inline
+    export function setHSV(hue: number, saturation: number, brightness: number, led: number = 100, strip: number = 100): string {
+        return "SET HSV:" + hue + " " + saturation + " " + brightness + " " + led + " " + strip + " "
+    }
+
+    //% blockId=leaveUnchanged
+    //% group="Lights Messages"
+    //% color=#c1c1c1
+    //% block="no change"
+    export function unchanged(): number {
+        return 666
+    }
+
+    //% blockId=allOfThem
+    //% group="Lights Messages"
+    //% color=#97ef98
+    //% block="all"
+    export function all(): number {
+        return 666
     }
 }
