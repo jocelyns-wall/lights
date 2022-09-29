@@ -44,6 +44,17 @@ namespace jC_Lights {
     }
 
     /**
+     * A message string to send to Jocelyn's wall.
+     * This command starts the effects demo
+     * The demo cycles though all the different effects
+     */
+    //% group="Effects Messages"
+    //% block="EFFECT:DEMO"
+    export function doEffectDemo() {
+        return "EFFECT:DEMO"
+    }
+
+    /**
       * The currently available lighting effects
       * @param effect eg: 0
       */
