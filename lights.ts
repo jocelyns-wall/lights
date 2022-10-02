@@ -34,6 +34,7 @@ namespace jC_Lights {
     /**
      * A message string to send to Jocelyn's wall.
      * Choose an effect number from 0 to 5
+     * Translates to JSON
      */
     //% group="Effects Messages"
     //% num.min=0 num.max=5 num.defl=3
