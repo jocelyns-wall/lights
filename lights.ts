@@ -40,7 +40,7 @@ namespace jC_Lights {
     //% block="EFFECT:$effect"
     //% effect.shadow="effectNumber"
     export function doSpecialEffect(effect: number) {
-        return "EFFECT:" + effect
+        return "{\"command\":\"effect\", \"id\":\"" + effect
     }
 
     /**
@@ -51,7 +51,7 @@ namespace jC_Lights {
     //% group="Effects Messages"
     //% block="EFFECT:DEMO"
     export function doEffectDemo() {
-        return "EFFECT:DEMO"
+        return "{\"command\":\"effect\", \"id\":demo\""
     }
 
     /**
@@ -81,7 +81,7 @@ namespace jC_Lights {
     //% block="SET BRIGHTNESS:%brightness"
     //% brightness.min=0 brightness.max=255
     export function setBrightness(brightness: number): string {
-        return "SET BRIGHTNESS:" + brightness
+        return "{\"command\":\"brightness\", \"value\":\"" + brightness
     }
 
     /**
@@ -98,6 +98,7 @@ namespace jC_Lights {
     //% inlineInputMode=inline
     export function setHSV(hue: number, saturation: number, brightness: number, led: number = 100, strip: number = 100): string {
         return "SET HSV:" + hue + " " + saturation + " " + brightness + " " + led + " " + strip + " "
+        return "{\"command\":\"hsv\", \"hue\":\"" + hue + "\"saturation\":\"" + saturation + "\"brightness\":\"" + brightness + "\"led\":\"" + led + "\"strip\":\"" + strip
     }
 
     //% blockId=leaveUnchanged
