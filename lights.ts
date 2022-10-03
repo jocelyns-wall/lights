@@ -94,7 +94,10 @@ namespace jC_Lights {
     //% expandableArgumentMode="enabled"
     //% inlineInputMode=inline
     export function setHSV(hue: number, saturation: number, brightness: number, led: number = 255): string {
-        return "L" + hue + 100 + saturation + 100 + brightness + 100 + toHex(led)
+        hue+=100
+        saturation+=100
+        brightness+=100
+        return "L" + hue + saturation + brightness + toHex(led)
     }
 
     //% blockId=leaveUnchanged
