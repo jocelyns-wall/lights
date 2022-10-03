@@ -11,36 +11,33 @@
 namespace jC_Lights {
 
     /**
-     * A serial connection and a bluetooth connection
-     * are both set up to allow the microbit to
-     * communicate to a raspbery pi in the wall.
+     * Sets up a radio connection on to a microbit
+     * in the wall to communicate to a raspbery pi
      */
     //% block="Set up a connection with Jocelyn's wall"
     export function setWallConnection():void {
         radio.setGroup(111)
-        serial.setBaudRate(BaudRate.BaudRate9600)
     }
 
     /**
      * Sends a command to Jocelyn's wall
-     * over bluetooth and serial channels
      */
     //% block="send message %message to Jocelyn's wall"
     export function sendWallCommand(message: string): void {
         radio.sendString(message)
-        serial.writeLine(message)
     }
 
     /**
      * A message string to send to Jocelyn's wall.
      * Choose an effect number from 0 to 5
+     * Translates to escaped JSON
      */
     //% group="Effects Messages"
     //% num.min=0 num.max=5 num.defl=3
-    //% block="EFFECT:$effect"
+    //% block="Effect:$effect"
     //% effect.shadow="effectNumber"
     export function doSpecialEffect(effect: number) {
-        return "EFFECT:" + effect
+        return ">E" + effect + "<"
     }
 
     /**
@@ -49,9 +46,9 @@ namespace jC_Lights {
      * The demo cycles though all the different effects
      */
     //% group="Effects Messages"
-    //% block="EFFECT:DEMO"
+    //% block="Effects Demo"
     export function doEffectDemo() {
-        return "EFFECT:DEMO"
+        return ">D<"
     }
 
     /**
@@ -78,41 +75,25 @@ namespace jC_Lights {
      * A message string to send to Jocelyn's wall.
      */
     //% group="Lights Messages"
-    //% block="SET BRIGHTNESS:%brightness"
+    //% block="Set Brightness:%brightness"
     //% brightness.min=0 brightness.max=255
     export function setBrightness(brightness: number): string {
-        return "SET BRIGHTNESS:" + brightness
+        return ">B" + brightness + "<"
     }
 
     /**
      * A message string to send to Jocelyn's wall.
      */
     //% group="Lights Messages"
-    //% block="SET HSV:hue=%h saturation=%s brightness=%v||on LED=$led on strip=$strip"
+    //% block="Set HSV:hue=%h saturation=%s brightness=%v"
     //% hue.min=0 hue.max=255
     //% saturation.min=0 saturation.max=255
     //% brightness.min=0 brightness.max=255
-    //% led.min=0 led.max=29 led.defl=0 
-    //% strip.min=0 strip.max=4 strip.defl=0
-    //% expandableArgumentMode="enabled"
     //% inlineInputMode=inline
-    export function setHSV(hue: number, saturation: number, brightness: number, led: number = 100, strip: number = 100): string {
-        return "SET HSV:" + hue + " " + saturation + " " + brightness + " " + led + " " + strip + " "
-    }
-
-    //% blockId=leaveUnchanged
-    //% group="Lights Messages"
-    //% color=#c1c1c1
-    //% block="no change"
-    export function unchanged(): number {
-        return 666
-    }
-
-    //% blockId=allOfThem
-    //% group="Lights Messages"
-    //% color=#97ef98
-    //% block="all"
-    export function all(): number {
-        return 666
+    export function setHSV(hue: number, saturation: number, brightness: number): string {
+        if (hue        < 100) { hue       +=600 }
+        if (saturation < 100) { saturation+=600 }
+        if (brightness < 100) { brightness+=600 }
+        return ">" + hue + saturation + brightness + "<"
     }
 }
