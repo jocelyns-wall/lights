@@ -89,11 +89,11 @@ namespace jC_Lights {
     //% hue.min=0 hue.max=255
     //% saturation.min=0 saturation.max=255
     //% brightness.min=0 brightness.max=255
-    //% led.min=0 led.max=29
-    //% led.shadow="allOfThem"
+    //% led.min=0 led.max=149
+    /*% led.shadow="allOfThem"*/
     //% expandableArgumentMode="enabled"
     //% inlineInputMode=inline
-    export function setHSV(hue: number, saturation: number, brightness: number, led: number): string {
+    export function setHSV(hue: number, saturation: number, brightness: number, led: number = 255): string {
         return "L" + hue + 100 + saturation + 100 + brightness + 100 + toHex(led)
     }
 
@@ -109,7 +109,7 @@ namespace jC_Lights {
     //% group="Lights Messages"
     //% color=#97ef98
     //% block="all of them"
-    export function all(): number {
+    function all(): number {
         return 255
     }
 
