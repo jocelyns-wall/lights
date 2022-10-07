@@ -93,11 +93,11 @@ namespace jC_Lights {
     /*% led.shadow="allOfThem"*/
     //% expandableArgumentMode="enabled"
     //% inlineInputMode=inline
-    export function setHSV(hue: number, saturation: number, brightness: number, led: number = 255): string {
-        hue+=100
-        saturation+=100
-        brightness+=100
-        led+=16
+    export function setHSV(hue: number, saturation: number, brightness: number, led: number = 150): string {
+        hue = Math.constrain(Math.round(hue+100), 100, 255+100)
+        saturation = Math.constrain(Math.round(saturation + 100), 100, 255 + 100)
+        brightness = Math.constrain(Math.round(brightness + 100), 100, 255 + 100)
+        led = Math.constrain(Math.round(led+16), 16, 150+16)
         return "L" + hue + saturation + brightness + toHex(led)
     }
 
@@ -113,8 +113,8 @@ namespace jC_Lights {
     //% group="Lights Messages"
     //% color=#97ef98
     //% block="all of them"
-    function all(): number {
-        return 255
+    export function all(): number {
+        return 150
     }
 
     /**
