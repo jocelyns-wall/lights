@@ -97,6 +97,7 @@ namespace jC_Lights {
         hue+=100
         saturation+=100
         brightness+=100
+        led+=16
         return "L" + hue + saturation + brightness + toHex(led)
     }
 
